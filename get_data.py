@@ -31,11 +31,10 @@ def get_categories(categories):
     return str1
 
 def get_desc(sub_categories, id):
-    str1 = "Я предлагаю Вам пообщаться на тему: \n"
     for sub_category in sub_categories:
         if sub_category['id'] == id:
-            str1 = str1 + f"{sub_category['name']}: {sub_category['desc']}\n"
-    return str1
+            return sub_category['desc']
+    
 
 
 if __name__ == "__main__":
@@ -46,5 +45,10 @@ if __name__ == "__main__":
     str1 = get_sub_categories(sub_categories, parent_id)
     print(str1)
     id  = int(input("Введите номер темы для общения: "))
-    str1 = get_desc(sub_categories, id)
-    print(str1)
+    data = get_desc(sub_categories, id)
+    print(data)
+    for item in data:
+        desc = item[0]
+        img = item[1]
+        print(f"{desc} - {img}")
+        
